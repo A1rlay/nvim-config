@@ -9,17 +9,18 @@ return {
 
       keywords = {
         TODO = { color = 'info' },
-        FIX = { color = 'error' },
+        FIX = { color = 'warning' },
         NOTE = { color = 'hint' },
-        DONE = { icon = '✔', color = 'test' }, -- nuevo DONE verde
+        DONE = { icon = '✔', color = 'test' },
+        WARNING = { color = 'error' },
       },
 
       colors = {
         error = { 'DiagnosticError', 'ErrorMsg', '#DC2626' },
-        warning = { 'DiagnosticWarn', 'WarningMsg', '#FBBF24' },
+        warning = { 'DiagnosticWarn', 'WarningMsg', '#FF7518' },
         info = { 'DiagnosticInfo', '#2563EB' },
         hint = { 'DiagnosticHint', '#10B981' },
-        test = { 'DiagnosticOk', '#22c55e' }, -- verde para DONE
+        test = { 'DiagnosticOk', '#22c55e' },
       },
     },
   },
