@@ -5,7 +5,7 @@ return {
     priority = 1000,
     opts = {
       flavour = 'mocha',
-      transparent_background = true, -- ¡importante!
+      transparent_background = true,
       integrations = {
         telescope = { enabled = true },
         which_key = true,
