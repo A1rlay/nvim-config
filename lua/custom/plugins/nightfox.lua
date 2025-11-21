@@ -2,7 +2,7 @@ return {
   {
     'EdenEast/nightfox.nvim',
     name = 'nightfox',
-    priority = 1000,
+    priority = 1,
     config = function()
       require('nightfox').setup {
         options = {
@@ -14,7 +14,7 @@ return {
         specs = {},
         groups = {},
       }
-      vim.cmd 'colorscheme nightfox' -- alternatives: dawnfox, duskfox, nordfox, terafox, carbonfox
+      vim.cmd 'colorscheme carbonfox' -- alternatives: nightfox, dawnfox, duskfox, nordfox, terafox, carbonfox
     end,
   },
 }
