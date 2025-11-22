@@ -15,7 +15,7 @@ return {
       -- un poco de blending en Telescope
       o.defaults = o.defaults or {}
       o.defaults.winblend = 10
-      o.defaults.border = true
+      o.defaults.border = false
       return o
     end,
   },
