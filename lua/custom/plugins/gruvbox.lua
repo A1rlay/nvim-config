@@ -1,14 +1,15 @@
 return {
-  {
-    'morhetz/gruvbox',
-    name = 'gruvbox',
-    priority = 1000,
-    config = function()
-      vim.o.background = 'dark' -- or "light"
-      vim.g.gruvbox_contrast_dark = 'hard'
-      vim.g.gruvbox_invert_selection = '0'
-      vim.g.gruvbox_transparent_bg = 1
-      -- vim.cmd 'colorscheme gruvbox'
-    end,
-  },
+  lazy = true,
+  enabled = true,
+  'sainnhe/gruvbox-material',
+  priority = 1000,
+  config = function()
+    vim.g.gruvbox_material_diagnostic_virtual_text = 'colored'
+    vim.g.gruvbox_material_diagnostic_text_highlight = 0
+    vim.g.gruvbox_material_diagnostic_line_highlight = 0
+    vim.g.gruvbox_material_inlay_hints_background = 'none'
+    vim.g.gruvbox_material_background = 'hard'
+    vim.g.gruvbox_material_ui_contrast = 'high'
+    vim.g.gruvbox_material_foreground = 'material'
+  end,
 }

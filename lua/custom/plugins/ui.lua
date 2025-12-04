@@ -1,3 +1,4 @@
+-- Terminal colors
 return {
   {
     -- sólo para ejecutar nuestro código UI
