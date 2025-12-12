@@ -45,8 +45,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
       pcall(hl, 0, group, { bg = 'none' })
     end
 
-    hl(0, 'CursorLine', { bg = '#3b3b4a' })
-    hl(0, 'NeoTreeCursorLine', { bg = '#3b3b4a' })
+    hl(0, 'CursorLine', { bg = '#33333b' })
+    hl(0, 'NeoTreeCursorLine', { bg = '#33333b' })
   end,
 })
 
