@@ -5,7 +5,7 @@ return {
     event = 'VimEnter',
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {
-      signs = false, -- seguimos sin signos en el gutter
+      signs = false,
 
       keywords = {
         TODO = { color = 'info' },

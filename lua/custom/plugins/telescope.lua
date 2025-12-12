@@ -2,17 +2,15 @@ return {
   'nvim-telescope/telescope.nvim',
   opts = function(_, opts)
     opts.defaults = vim.tbl_deep_extend('force', opts.defaults or {}, {
-      layout_strategy = 'horizontal', -- otras opciones: vertical, flex, center
+      layout_strategy = 'horizontal',
       layout_config = {
-        -- para horizontal
-        width = 0.99, -- porcentaje de la pantalla (1 = 100%)
+        width = 0.99,
         height = 0.95,
         preview_width = 0.6,
 
-        -- para vertical
         preview_height = 0.9,
       },
-      winblend = 10, -- mantiene transparencia
+      winblend = 10,
     })
     return opts
   end,

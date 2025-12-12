@@ -2,7 +2,7 @@ return {
   lazy = true,
   enabled = true,
   'sainnhe/gruvbox-material',
-  priority = 1000,
+  -- priority = 1000,
   config = function()
     vim.g.gruvbox_material_diagnostic_virtual_text = 'colored'
     vim.g.gruvbox_material_diagnostic_text_highlight = 0
