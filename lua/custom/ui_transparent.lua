@@ -1,4 +1,3 @@
--- ~/.config/nvim/lua/custom/ui_transparent.lua
 vim.o.winblend = 10
 vim.o.pumblend = 10
 
@@ -6,26 +5,46 @@ vim.api.nvim_create_autocmd('ColorScheme', {
   group = vim.api.nvim_create_augroup('MyTransparentUI', { clear = true }),
   callback = function()
     local hl = vim.api.nvim_set_hl
-    hl(0, 'Normal', { bg = 'none' })
-    hl(0, 'NormalFloat', { bg = 'none' })
-    hl(0, 'FloatBorder', { bg = 'none' })
-    hl(0, 'MsgArea', { bg = 'none' })
 
-    -- Telescope
-    hl(0, 'TelescopeNormal', { bg = 'none' })
-    hl(0, 'TelescopeBorder', { bg = 'none' })
-    hl(0, 'TelescopePromptNormal', { bg = 'none' })
-    hl(0, 'TelescopePromptBorder', { bg = 'none' })
-    hl(0, 'TelescopeResultsNormal', { bg = 'none' })
-    hl(0, 'TelescopePreviewNormal', { bg = 'none' })
+    local transparent_groups = {
+      -- ventanas normales
+      'Normal',
+      'NormalNC',
+      'NormalFloat',
+      'SignColumn',
+      'FoldColumn',
+      'EndOfBuffer',
+      'MsgArea',
 
-    -- WhichKey
-    hl(0, 'WhichKeyFloat', { bg = 'none' })
-    hl(0, 'WhichKeyNormal', { bg = 'none' })
-    hl(0, 'WhichKeyBorder', { bg = 'none' })
+      -- Neo-tree (sidebar)
+      'NeoTreeNormal',
+      'NeoTreeNormalNC',
+      'NeoTreeFloatNormal',
+      'NeoTreeEndOfBuffer',
+      'NeoTreeWinSeparator',
+      'NeoTreeStatusLine',
+      'NeoTreeStatusLineNC',
 
-    -- nvim-notify
-    hl(0, 'NotifyBackground', { bg = 'none' })
+      -- Telescope
+      'TelescopeNormal',
+      'TelescopeBorder',
+      'TelescopePromptNormal',
+      'TelescopePromptBorder',
+      'TelescopeResultsNormal',
+      'TelescopePreviewNormal',
+
+      -- WhichKey
+      'WhichKeyFloat',
+      'WhichKeyNormal',
+      'WhichKeyBorder',
+
+      -- nvim-notify
+      'NotifyBackground',
+    }
+
+    for _, group in ipairs(transparent_groups) do
+      pcall(hl, 0, group, { bg = 'none' })
+    end
   end,
 })
 
