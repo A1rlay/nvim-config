@@ -39,12 +39,18 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
       -- nvim-notify
       'NotifyBackground',
+
+      -- popup
+      'Pmenu',
+      'PmenuSbar',
+      'PmenuThumb',
     }
 
     for _, group in ipairs(transparent_groups) do
       pcall(hl, 0, group, { bg = 'none' })
     end
 
+    hl(0, 'PmenuSel', { bg = '#33333b' })
     hl(0, 'CursorLine', { bg = '#33333b' })
     hl(0, 'NeoTreeCursorLine', { bg = '#33333b' })
   end,
