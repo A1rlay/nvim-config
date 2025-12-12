@@ -21,7 +21,6 @@ vim.api.nvim_create_autocmd('ColorScheme', {
       'NeoTreeNormalNC',
       'NeoTreeFloatNormal',
       'NeoTreeEndOfBuffer',
-      'NeoTreeWinSeparator',
       'NeoTreeStatusLine',
       'NeoTreeStatusLineNC',
 
@@ -45,6 +44,9 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     for _, group in ipairs(transparent_groups) do
       pcall(hl, 0, group, { bg = 'none' })
     end
+
+    hl(0, 'CursorLine', { bg = '#3b3b4a' })
+    hl(0, 'NeoTreeCursorLine', { bg = '#3b3b4a' })
   end,
 })
 
