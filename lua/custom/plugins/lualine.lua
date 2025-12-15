@@ -4,13 +4,18 @@ return {
   config = function()
     require('lualine').setup {
       options = {
+        icons_enabled = true,
         theme = 'auto',
-        section_separators = '',
-        component_separators = '',
+        component_separators = { left = '│', right = '│' },
+        section_separators = { left = '', right = '' },
+        always_divide_middle = true,
         globalstatus = true,
+        refresh = {
+          statusline = 1000,
+          tabline = 1000,
+          winbar = 1000,
+        },
       },
     }
-    vim.api.nvim_set_hl(0, 'StatusLine', { bg = 'none' })
-    vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = 'none' })
   end,
 }

@@ -7,7 +7,6 @@ return {
         width = 0.99,
         height = 0.95,
         preview_width = 0.6,
-
         preview_height = 0.9,
       },
       winblend = 10,
