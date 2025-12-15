@@ -11,7 +11,6 @@ return {
         },
       },
     },
-    -- transparent = false,
-    theme = 'wave', -- wave, dragon, lotus
+    theme = 'wave',
   },
 }
