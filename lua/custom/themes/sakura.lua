@@ -5,6 +5,6 @@ return {
   priority = 1000,
   config = function()
     vim.opt.background = 'dark' -- or "light"
-    vim.cmd.colorscheme 'sakura'
+    -- vim.cmd.colorscheme 'sakura'
   end,
 }
