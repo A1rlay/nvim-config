@@ -15,13 +15,4 @@ return {
       require 'custom.ui_transparent'
     end,
   },
-  {
-    'nvim-telescope/telescope.nvim',
-    opts = function(_, opts)
-      opts.defaults = opts.defaults or {}
-      opts.defaults.winblend = 10
-      opts.defaults.border = false
-      return opts
-    end,
-  },
 }

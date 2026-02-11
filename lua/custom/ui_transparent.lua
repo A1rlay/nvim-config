@@ -42,14 +42,6 @@ vim.api.nvim_create_autocmd('ColorScheme', {
       'NeoTreeStatusLine',
       'NeoTreeStatusLineNC',
 
-      -- Telescope
-      'TelescopeNormal',
-      'TelescopeBorder',
-      'TelescopePromptNormal',
-      'TelescopePromptBorder',
-      'TelescopeResultsNormal',
-      'TelescopePreviewNormal',
-
       -- WhichKey
       'WhichKeyFloat',
       'WhichKeyNormal',
