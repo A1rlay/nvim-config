@@ -58,27 +58,5 @@ return {
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = '[S]earch [N]eovim files' })
 
-    local function apply_telescope_transparency()
-      local solid_bg = '#1f1d1a'
-      local border_fg = '#e6db74'
-
-      vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = 'none' })
-      vim.api.nvim_set_hl(0, 'TelescopeBorder', { fg = border_fg, bg = 'none' })
-      vim.api.nvim_set_hl(0, 'TelescopePromptNormal', { bg = 'none' })
-      vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { fg = border_fg, bg = 'none' })
-      vim.api.nvim_set_hl(0, 'TelescopeResultsNormal', { bg = 'none' })
-      vim.api.nvim_set_hl(0, 'TelescopeResultsBorder', { fg = border_fg, bg = 'none' })
-      vim.api.nvim_set_hl(0, 'TelescopeResultsTitle', { bg = 'none' })
-      vim.api.nvim_set_hl(0, 'TelescopePreviewNormal', { bg = 'none' })
-      vim.api.nvim_set_hl(0, 'TelescopePreviewBorder', { fg = border_fg, bg = 'none' })
-      vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { bg = 'none' })
-    end
-
-    vim.api.nvim_create_autocmd('ColorScheme', {
-      group = vim.api.nvim_create_augroup('TelescopeTransparency', { clear = true }),
-      callback = apply_telescope_transparency,
-    })
-
-    apply_telescope_transparency()
   end,
 }
