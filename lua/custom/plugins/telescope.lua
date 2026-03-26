@@ -28,6 +28,25 @@ return {
   config = function(_, opts)
     require('telescope').setup(opts)
 
+    local function set_telescope_preview_highlights()
+      local hl = vim.api.nvim_set_hl
+      local ok, matching = pcall(vim.api.nvim_get_hl, 0, { name = 'TelescopeMatching', link = false })
+      local preview_hl = ok and matching or { fg = '#fc9867', bold = true }
+
+      preview_hl = vim.tbl_extend('force', preview_hl, { nocombine = true, bg = 'none' })
+
+      hl(0, 'TelescopePreviewLine', preview_hl)
+      hl(0, 'TelescopePreviewMatch', preview_hl)
+    end
+
+    set_telescope_preview_highlights()
+
+    local group = vim.api.nvim_create_augroup('CustomTelescopePreviewHighlights', { clear = true })
+    vim.api.nvim_create_autocmd('ColorScheme', {
+      group = group,
+      callback = set_telescope_preview_highlights,
+    })
+
     pcall(require('telescope').load_extension, 'fzf')
     -- pcall(require('telescope').load_extension, 'ui-select')
 
@@ -57,6 +76,5 @@ return {
     vim.keymap.set('n', '<leader>sn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = '[S]earch [N]eovim files' })
-
   end,
 }
