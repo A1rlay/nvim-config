@@ -1,29 +1,43 @@
 #!/usr/bin/env bash
-set -e
+# Instala las dependencias y la configuración de Neovim.
+# Funciona tanto desde un clon ya existente en ~/.config/nvim como en una máquina nueva.
+set -euo pipefail
 
-echo "🚀 Instalando dependencias básicas..."
+REPO_URL="https://github.com/A1rlay/nvim-config"
+NVIM_DIR="$HOME/.config/nvim"
+FONT_DIR="$HOME/.local/share/fonts"
+
+echo "🚀 Instalando dependencias..."
 sudo apt update
-sudo apt install -y neovim git curl unzip ripgrep fd-find
+# make/gcc: telescope-fzf-native, LuaSnip y parsers de treesitter
+# nodejs/npm: Mason los necesita para pyright, typescript-language-server y prettierd
+sudo apt install -y neovim git curl unzip ripgrep fd-find make gcc nodejs npm
 
-echo "📦 Instalando GitHub CLI (gh)..."
-type gh >/dev/null 2>&1 || sudo apt install -y gh
-
-echo "🎨 Instalando Nerd Font (FiraCode)..."
-if [ ! -d "$HOME/.local/share/fonts" ]; then
-  mkdir -p "$HOME/.local/share/fonts"
+NVIM_VERSION="$(nvim --version | head -1 | grep -oE '[0-9]+\.[0-9]+' | head -1)"
+if [ "$(printf '%s\n' 0.11 "$NVIM_VERSION" | sort -V | head -1)" != "0.11" ]; then
+  echo "⚠️  Neovim $NVIM_VERSION es muy viejo: esta config necesita 0.11 o superior (vim.lsp.config)."
 fi
-cd "$HOME/.local/share/fonts"
-if [ ! -f "FiraCodeNerdFont-Regular.ttf" ]; then
-  curl -fLo "FiraCode.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip
-  unzip -o FiraCode.zip -d FiraCode
-  fc-cache -fv
+
+echo "🎨 Instalando Iosevka Nerd Font..."
+if ! fc-list | grep -qi "Iosevka Nerd Font"; then
+  mkdir -p "$FONT_DIR/Iosevka"
+  tmp="$(mktemp -d)"
+  curl -fLo "$tmp/Iosevka.zip" https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Iosevka.zip
+  unzip -o -q "$tmp/Iosevka.zip" -d "$FONT_DIR/Iosevka"
+  rm -rf "$tmp"
+  fc-cache -f
 fi
 
 echo "⚙️ Configurando Neovim..."
-if [ -d "$HOME/.config/nvim" ]; then
-  mv "$HOME/.config/nvim" "$HOME/.config/nvim.bak.$(date +%s)"
+if git -C "$NVIM_DIR" remote get-url origin 2>/dev/null | grep -qi "A1rlay/nvim-config"; then
+  echo "La configuración ya está clonada en $NVIM_DIR, no se toca."
+else
+  if [ -e "$NVIM_DIR" ]; then
+    backup="$NVIM_DIR.bak.$(date +%s)"
+    echo "Respaldando la configuración actual en $backup"
+    mv "$NVIM_DIR" "$backup"
+  fi
+  git clone "$REPO_URL" "$NVIM_DIR"
 fi
-git clone https://github.com/a1rlay/nvim ~/.config/nvim
 
-echo "✅ Listo. Abre Neovim con: nvim"
-
+echo "✅ Listo. Abre Neovim con: nvim (Lazy y Mason instalarán todo en el primer arranque)"
